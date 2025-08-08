@@ -2,6 +2,8 @@
 import Header from '../components/Header';
 import Button from '../components/Button';
 import Card from '../components/Card';
+import Image from 'next/image';
+import productImage from '../../public/images/product.jpeg';
 
 export default function Home() {
   return (
@@ -19,7 +21,7 @@ export default function Home() {
             Inspired by Nalanda Gedige
           </p>
           <p className="font-body text-lg md:text-xl text-text-light max-w-2xl mx-auto mb-12 animate-slide-up">
-            Discover our exquisite clock lamps that blend ancient heritage with modern elegance. 
+            Discover our exquisite clock lamp that blend ancient heritage with modern elegance. 
             Each piece is inspired by the timeless architecture of Nalanda Gedige.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
@@ -81,13 +83,13 @@ export default function Home() {
                 View Gallery
               </Button>
             </div>
-            <Card variant="accent" className="h-96 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-4xl">🕰️</span>
-                </div>
-                <p className="font-body text-text-light">Product Image Placeholder</p>
-              </div>
+            <Card variant="accent" className="w-fit overflow-hidden">
+              <Image
+                src={productImage}
+                alt="Clock Lamp - product"
+                className="block"
+                priority
+              />
             </Card>
           </div>
         </div>
@@ -244,9 +246,9 @@ export default function Home() {
       <section id="contact" className="py-20 px-6 bg-background-light">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-primary mb-16">
-            Contact Us
+            Contact Me
           </h2>
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid sm:grid-cols-2 items-start gap-12">
             {/* Contact Information */}
             <div>
               <h3 className="font-heading text-2xl font-bold text-primary mb-6">
@@ -289,13 +291,14 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
+ 
             {/* Contact Form */}
-            <Card className="p-8">
+            <div>
               <h3 className="font-heading text-2xl font-bold text-primary mb-6">
                 Send us a Message
               </h3>
-              <form className="space-y-6">
+              <Card className="p-8">
+                <form className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block font-body font-bold text-text-dark mb-2">
                     Name
@@ -332,8 +335,9 @@ export default function Home() {
                 <Button variant="primary" className="w-full">
                   Send Message
                 </Button>
-              </form>
-            </Card>
+                </form>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -373,51 +377,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 bg-text-dark text-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-heading text-2xl font-bold mb-4">Clock Lamp</h3>
-              <p className="font-body text-text-light">
-                Heritage-inspired lighting for modern homes.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-heading text-lg font-bold mb-4">Products</h4>
-              <ul className="font-body text-text-light space-y-2">
-                <li>Clock Lamp</li>
-                <li>Specifications</li>
-                <li>Dimensions</li>
-                <li>Materials</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-heading text-lg font-bold mb-4">Company</h4>
-              <ul className="font-body text-text-light space-y-2">
-                <li>Our Story</li>
-                <li>Heritage</li>
-                <li>Contact</li>
-                <li>Support</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-heading text-lg font-bold mb-4">Connect</h4>
-              <ul className="font-body text-text-light space-y-2">
-                <li>Instagram</li>
-                <li>Facebook</li>
-                <li>Pinterest</li>
-                <li>Email</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-text-light mt-8 pt-8 text-center">
-            <p className="font-body text-text-light">
-              © 2024 Clock Lamp. All rights reserved. Inspired by Nalanda Gedige.
-            </p>
-          </div>
-        </div>
-      </footer>
+
     </main>
   )
 }
