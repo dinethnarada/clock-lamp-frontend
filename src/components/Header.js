@@ -48,12 +48,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="primary" size="small">
-              Order Now
-            </Button>
-          </div>
+
 
           {/* Mobile Menu Button */}
           <button
@@ -81,11 +76,7 @@ const Header = () => {
                   {item.name}
                 </button>
               ))}
-              <div className="pt-4">
-                <Button variant="primary" size="small" className="w-full">
-                  Order Now
-                </Button>
-              </div>
+
             </nav>
           </div>
         )}

@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import Card from '../components/Card';
@@ -6,6 +7,51 @@ import Card from '../components/Card';
 // import productImage from '../../public/images/product.jpeg';
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: data.message });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || 'Failed to send message' });
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background-light">
       <Header />
@@ -314,8 +360,8 @@ export default function Home() {
                   <div>
                     <h4 className="font-heading font-bold text-text-dark">Address</h4>
                     <p className="font-body text-text-light">
-                      123 Heritage Street<br />
-                      Colombo, Sri Lanka
+                      38 A, 1st Cross Road, Pamburana<br />
+                      Matara, Sri Lanka
                     </p>
                   </div>
                 </div>
@@ -326,7 +372,7 @@ export default function Home() {
                   <div>
                     <h4 className="font-heading font-bold text-text-dark">Email</h4>
                     <p className="font-body text-text-light">
-                      info@clocklamp.com
+                      kalinidwidhanage@gmail.com
                     </p>
                   </div>
                 </div>
@@ -337,7 +383,7 @@ export default function Home() {
                   <div>
                     <h4 className="font-heading font-bold text-text-dark">Phone</h4>
                     <p className="font-body text-text-light">
-                      +94 11 234 5678
+                      +94 758459946
                     </p>
                   </div>
                 </div>
@@ -350,43 +396,69 @@ export default function Home() {
                 Send Me a Message
               </h3>
               <Card className="p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
-                <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block font-body font-bold text-text-dark mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 border border-secondary/30 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent font-body"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block font-body font-bold text-text-dark mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 border border-secondary/30 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent font-body"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block font-body font-bold text-text-dark mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows="4"
-                    className="w-full px-4 py-3 border border-secondary/30 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent font-body"
-                    placeholder="Your message..."
-                  ></textarea>
-                </div>
-                <Button variant="primary" className="w-full">
-                  Send Message
-                </Button>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitStatus && (
+                    <div className={`p-4 rounded-lg ${
+                      submitStatus.type === 'success' 
+                        ? 'bg-green-100 border border-green-400 text-green-700' 
+                        : 'bg-red-100 border border-red-400 text-red-700'
+                    }`}>
+                      {submitStatus.message}
+                    </div>
+                  )}
+                  <div>
+                    <label htmlFor="name" className="block font-body font-bold text-text-dark mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-secondary/30 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent font-body"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block font-body font-bold text-text-dark mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-secondary/30 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent font-body"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block font-body font-bold text-text-dark mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows="4"
+                      className="w-full px-4 py-3 border border-secondary/30 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent font-body"
+                      placeholder="Your message..."
+                    ></textarea>
+                  </div>
+                  <Button 
+                    type="submit"
+                    variant="primary" 
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
                 </form>
               </Card>
             </div>
@@ -401,12 +473,10 @@ export default function Home() {
             Ready to Transform Your Space?
           </h2>
           <p className="font-body text-xl text-secondary mb-8">
-            Bring the elegance of Nalanda Gedige into your home with my exclusive Nalanda Radiance Clock Lamp.
+            Bring the elegance of Nalanda Gedige into your home with my exclusive Nalanda Radiance Clock Lamp. 
+            Contact me to place your order or inquire about availability.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="large">
-              Order Now
-            </Button>
+          <div className="flex justify-center">
             <Button 
               variant="outline" 
               size="large" 

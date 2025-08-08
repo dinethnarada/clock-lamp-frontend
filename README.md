@@ -35,6 +35,7 @@ A beautiful, heritage-inspired website for Nalanda Radiance Clock Lamp products,
 
 - Node.js 14+ (recommended: 18+)
 - npm or yarn
+- Gmail account for email functionality
 
 ### Installation
 
@@ -51,14 +52,26 @@ npm install
 yarn install
 ```
 
-3. Run the development server:
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory with:
+   ```
+   EMAIL_USER=your-gmail-address@gmail.com
+   EMAIL_PASS=your-gmail-app-password
+   ```
+   
+   **Note:** For Gmail, you'll need to:
+   - Enable 2-factor authentication
+   - Generate an App Password (not your regular password)
+   - Use the App Password in EMAIL_PASS
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📁 Project Structure
 
@@ -85,6 +98,7 @@ clock-lamp/
 - **Modern UI**: Clean, minimalist interface with subtle animations
 - **Accessible**: WCAG compliant with proper focus states and semantic HTML
 - **Performance**: Optimized for fast loading and smooth interactions
+- **Contact Form**: Functional contact form that sends emails to kalinidwidhanage@gmail.com
 
 ## 🎨 Components
 
