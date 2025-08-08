@@ -185,14 +185,14 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-accent/2 to-transparent"></div>
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <Card variant="accent" className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 luxury-shadow">
+            <Card variant="accent" className="order-2 md:order-1 overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 luxury-shadow">
               <img
                 src="/images/nalanda_gedige.jpeg"
                 alt="Nalanda Gedige Temple - Inspiration for Clock Lamp"
                 className="w-full"
               />
             </Card>
-            <div className="animate-slide-in">
+            <div className="order-1 md:order-2 animate-slide-in">
               <div className="w-16 h-1 bg-gradient-to-r from-accent to-accent-gold mb-6"></div>
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary mb-6">
                 My Inspiration
