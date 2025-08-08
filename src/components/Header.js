@@ -31,7 +31,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <h1 className="font-heading text-2xl font-bold text-primary">
-              Nalanda Radiance Clock Lamp
+              Nalanda Radiance
             </h1>
           </div>
 
