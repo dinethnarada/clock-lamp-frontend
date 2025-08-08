@@ -58,7 +58,7 @@ export default function Home() {
                 Heritage Meets Modern Living
               </h2>
               <p className="font-body text-lg text-text-light mb-6">
-                Our Clock Lamp is more than just a lighting fixture. It's a piece of art that 
+                Our Clock Lamp is more than just a lighting fixture. It&apos;s a piece of art that 
                 tells the story of ancient Sri Lankan architecture, specifically inspired by the 
                 magnificent Nalanda Gedige temple.
               </p>
