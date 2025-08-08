@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Clock Lamp Website
 
-## Getting Started
+A beautiful, heritage-inspired website for Clock Lamp products, drawing inspiration from the ancient architecture of Nalanda Gedige.
 
-First, run the development server:
+## 🎨 Design System
 
+### Color Palette
+
+| Use | Color | Hex | Description |
+|-----|-------|-----|-------------|
+| Primary | 🟤 Deep Stone Brown | `#4E3629` | Inspired by ancient stone architecture |
+| Secondary | 🟠 Warm Sandstone | `#C6A57B` | Reflects the sandstone texture of Gedige |
+| Accent | 🟡 Heritage Gold | `#D4AF37` | Adds a luxurious, traditional touch |
+| Background Light | ⚪ Ivory / Off-white | `#FDF8F2` | Keeps content clean, breathable |
+| Text Dark | ⚫ Charcoal Black | `#2C2C2C` | Modern readability, elegance |
+| Text Light | ⚪ Warm Grey | `#9A9A9A` | For subtitles, descriptions |
+
+### Typography
+
+- **Headings**: Playfair Display (serif) - Classical serif, adds heritage feel
+- **Body Text**: Lato (sans-serif) - Clean and modern sans-serif
+- **Accent/Quotes**: Great Vibes (cursive) - For quotes or elegant highlights
+
+### Design Principles
+
+- **Minimalist layout** with generous white space
+- **Subtle scroll animations** (fade-in, slide-in) for elegant feel
+- **Rounded corners** and gold/sandstone borders
+- **Heritage-inspired shadows** and textures
+- **Modern integration** with traditional aesthetics
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 14+ (recommended: 18+)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd clock-lamp
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+clock-lamp/
+├── src/
+│   ├── app/
+│   │   ├── globals.css          # Global styles and design system
+│   │   ├── layout.js            # Root layout with fonts and metadata
+│   │   └── page.js              # Homepage
+│   └── components/
+│       ├── Button.js            # Reusable button component
+│       ├── Card.js              # Reusable card component
+│       └── Header.js            # Navigation header
+├── public/                      # Static assets
+├── tailwind.config.js           # Tailwind configuration
+└── README.md                    # This file
+```
 
-## Learn More
+## 🎯 Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Responsive Design**: Mobile-first approach with elegant desktop layouts
+- **Heritage-Inspired**: Design system based on Nalanda Gedige architecture
+- **Modern UI**: Clean, minimalist interface with subtle animations
+- **Accessible**: WCAG compliant with proper focus states and semantic HTML
+- **Performance**: Optimized for fast loading and smooth interactions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Button Component
+```jsx
+<Button variant="primary" size="large">
+  Shop Now
+</Button>
+```
 
-## Deploy on Vercel
+**Variants**: `primary`, `accent`, `outline`, `dark`
+**Sizes**: `small`, `medium`, `large`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Card Component
+```jsx
+<Card variant="default" animate>
+  <h3>Card Title</h3>
+  <p>Card content...</p>
+</Card>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Variants**: `default`, `elevated`, `accent`, `dark`
+**Props**: `animate` for hover animations
+
+### Header Component
+```jsx
+<Header />
+```
+
+Includes responsive navigation and mobile menu.
+
+## 🎭 Animations
+
+- `animate-fade-in`: Smooth fade-in animation
+- `animate-slide-up`: Slide up from bottom
+- `animate-slide-in`: Slide in from left
+- Hover effects on cards and buttons
+
+## 🎨 Custom CSS Classes
+
+- `.heading-primary`: Primary heading styles
+- `.heading-secondary`: Secondary heading styles
+- `.text-accent`: Accent text styles
+- `.btn-primary`: Primary button styles
+- `.btn-accent`: Accent button styles
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: 0-768px
+- **Tablet**: 768px-1024px
+- **Desktop**: 1024px+
+
+## 🚀 Deployment
+
+The project is ready for deployment on Vercel, Netlify, or any other Next.js-compatible platform.
+
+```bash
+npm run build
+npm start
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🙏 Acknowledgments
+
+- Design inspiration from Nalanda Gedige temple architecture
+- Fonts from Google Fonts (Playfair Display, Lato, Great Vibes)
+- Icons from various sources
+- Community contributions and feedback
