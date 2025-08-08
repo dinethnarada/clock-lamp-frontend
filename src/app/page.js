@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import Card from '../components/Card';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 // import Image from 'next/image';
 // import productImage from '../../public/images/product.jpeg';
 
@@ -14,6 +15,15 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Scroll animation refs
+  const heroRef = useScrollAnimation(0.3);
+  const storyRef = useScrollAnimation(0.2);
+  const inspirationRef = useScrollAnimation(0.2);
+  const featuresRef = useScrollAnimation(0.2);
+  const galleryRef = useScrollAnimation(0.2);
+  const contactRef = useScrollAnimation(0.2);
+  const ctaRef = useScrollAnimation(0.2);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,16 +67,21 @@ export default function Home() {
       <Header />
       
       {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10"></div>
+      <section ref={heroRef} id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-16 luxury-gradient hero-shadow scroll-fade-in">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/3 to-secondary/5"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.1)_0%,transparent_70%)]"></div>
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <h1 className="font-heading text-6xl md:text-8xl font-bold text-text-dark mb-6 animate-fade-in">
-            Nalanda Radiance Clock Lamp
+          <div className="mb-8">
+            <div className="w-24 h-1 bg-gradient-to-r from-accent to-accent-gold mx-auto mb-6"></div>
+          </div>
+          <h1 className="font-heading text-6xl md:text-8xl font-bold text-text-dark mb-6 animate-fade-in-luxury">
+            Nalanda Radiance
+            <span className="block text-accent">Clock Lamp</span>
           </h1>
-          <p className="font-accent text-2xl md:text-3xl text-accent mb-8 animate-slide-up">
+          <p className="font-accent text-2xl md:text-3xl text-accent mb-8 animate-slide-up-luxury">
             Inspired by Nalanda Gedige
           </p>
-          <p className="font-body text-lg md:text-xl text-text-light max-w-2xl mx-auto mb-12 animate-slide-up">
+          <p className="font-body text-lg md:text-xl text-text-light max-w-2xl mx-auto mb-12 animate-slide-up-luxury">
             Discover my exquisite Nalanda Radiance clock lamp that blends ancient heritage with modern elegance. 
             Each piece is inspired by the timeless architecture of the Nalanda Gedige.
           </p>
@@ -110,10 +125,12 @@ export default function Home() {
       </section>
 
       {/* Product Story Section */}
-      <section id="story" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section ref={storyRef} id="story" className="py-20 px-6 bg-white relative modern-section section-shadow scroll-slide-up">
+        <div className="absolute inset-0 bg-gradient-to-br from-background-luxury/30 to-transparent"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-in">
+              <div className="w-16 h-1 bg-gradient-to-r from-accent to-accent-gold mb-6"></div>
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary mb-6">
                 Heritage Meets Modern Living
               </h2>
@@ -151,7 +168,7 @@ export default function Home() {
                 priority
               />
             </Card> */}
-            <Card variant="accent" className="h-96 flex items-center justify-center border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card variant="accent" className="h-96 flex items-center justify-center border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="text-center">
                 <div className="w-32 h-32 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center">
                   <span className="text-4xl">🕰️</span>
@@ -164,10 +181,11 @@ export default function Home() {
       </section>
 
       {/* Inspiration Section */}
-      <section id="inspiration" className="py-20 px-6 bg-background-light">
-        <div className="max-w-6xl mx-auto">
+      <section ref={inspirationRef} id="inspiration" className="py-20 px-6 bg-background-light relative section-shadow scroll-slide-up">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/2 to-transparent"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <Card variant="accent" className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card variant="accent" className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 luxury-shadow">
               <img
                 src="/images/nalanda_gedige.jpeg"
                 alt="Nalanda Gedige Temple - Inspiration for Clock Lamp"
@@ -175,6 +193,7 @@ export default function Home() {
               />
             </Card>
             <div className="animate-slide-in">
+              <div className="w-16 h-1 bg-gradient-to-r from-accent to-accent-gold mb-6"></div>
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary mb-6">
                 My Inspiration
               </h2>
@@ -194,13 +213,17 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-primary mb-16">
-            Why Choose My Nalanda Radiance Clock Lamp?
-          </h2>
+      <section ref={featuresRef} id="features" className="py-20 px-6 bg-white relative modern-section section-shadow scroll-slide-up">
+        <div className="absolute inset-0 bg-gradient-to-br from-background-luxury/20 to-transparent"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div className="w-24 h-1 bg-gradient-to-r from-accent to-accent-gold mx-auto mb-6"></div>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary">
+              Why Choose My Nalanda Radiance Clock Lamp?
+            </h2>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="w-16 h-16 bg-accent rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl">🏛️</span>
               </div>
@@ -212,7 +235,7 @@ export default function Home() {
                 cultural heritage and timeless beauty.
               </p>
             </Card>
-            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="w-16 h-16 bg-secondary rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl">✨</span>
               </div>
@@ -224,7 +247,7 @@ export default function Home() {
                 beauty that lasts for generations.
               </p>
             </Card>
-            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="w-16 h-16 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl">🏠</span>
               </div>
@@ -241,14 +264,18 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 px-6 bg-background-light">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-primary mb-16">
-            Gallery
-          </h2>
+      <section ref={galleryRef} id="gallery" className="py-20 px-6 bg-background-light relative section-shadow scroll-slide-up">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/1 to-transparent"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div className="w-24 h-1 bg-gradient-to-r from-accent to-accent-gold mx-auto mb-6"></div>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary">
+              Gallery
+            </h2>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Gallery Item 1 - Front View */}
-            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="h-64 bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -263,7 +290,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 2 - Side View */}
-            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -278,7 +305,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 3 - Detail Close-up */}
-            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="h-64 bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -293,7 +320,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 4 - Living Room Setting */}
-            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="h-64 bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -308,7 +335,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 5 - Bedroom Setting */}
-            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="h-64 bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -323,7 +350,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 6 - Study/Office Setting */}
-            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
               <div className="h-64 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -341,11 +368,15 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-primary mb-16">
-            Contact Me
-          </h2>
+      <section ref={contactRef} id="contact" className="py-20 px-6 bg-white relative modern-section section-shadow scroll-slide-up">
+        <div className="absolute inset-0 bg-gradient-to-br from-background-luxury/30 to-transparent"></div>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <div className="w-24 h-1 bg-gradient-to-r from-accent to-accent-gold mx-auto mb-6"></div>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary">
+              Contact Me
+            </h2>
+          </div>
           <div className="grid sm:grid-cols-2 items-start gap-12">
             {/* Contact Information */}
             <div>
@@ -395,7 +426,7 @@ export default function Home() {
               <h3 className="font-heading text-2xl font-bold text-primary mb-6">
                 Send Me a Message
               </h3>
-              <Card className="p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
+              <Card className="p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {submitStatus && (
                     <div className={`p-4 rounded-lg ${
@@ -467,8 +498,13 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-primary">
-        <div className="max-w-4xl mx-auto text-center">
+      <section ref={ctaRef} className="py-20 px-6 bg-primary relative overflow-hidden section-shadow scroll-slide-up">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent-gold/20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.1)_0%,transparent_70%)]"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="mb-8">
+            <div className="w-24 h-1 bg-gradient-to-r from-accent to-white mx-auto mb-6"></div>
+          </div>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your Space?
           </h2>
