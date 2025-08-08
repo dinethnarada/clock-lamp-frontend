@@ -2,8 +2,8 @@
 import Header from '../components/Header';
 import Button from '../components/Button';
 import Card from '../components/Card';
-import Image from 'next/image';
-import productImage from '../../public/images/product.jpeg';
+// import Image from 'next/image';
+// import productImage from '../../public/images/product.jpeg';
 
 export default function Home() {
   return (
@@ -15,17 +15,31 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10"></div>
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1 className="font-heading text-6xl md:text-8xl font-bold text-text-dark mb-6 animate-fade-in">
-            Clock Lamp
+            Nalanda Radiance Clock Lamp
           </h1>
           <p className="font-accent text-2xl md:text-3xl text-accent mb-8 animate-slide-up">
             Inspired by Nalanda Gedige
           </p>
           <p className="font-body text-lg md:text-xl text-text-light max-w-2xl mx-auto mb-12 animate-slide-up">
-            Discover our exquisite clock lamp that blend ancient heritage with modern elegance. 
-            Each piece is inspired by the timeless architecture of Nalanda Gedige.
+            Discover my exquisite Nalanda Radiance clock lamp that blends ancient heritage with modern elegance. 
+            Each piece is inspired by the timeless architecture of the Nalanda Gedige.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
-            <Button variant="primary" size="large">
+            <Button 
+              variant="primary" 
+              size="large"
+              onClick={() => {
+                const element = document.querySelector('#gallery');
+                if (element) {
+                  const headerHeight = 64;
+                  const elementPosition = element.offsetTop - headerHeight;
+                  window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+            >
               View Gallery
             </Button>
             <Button 
@@ -58,12 +72,12 @@ export default function Home() {
                 Heritage Meets Modern Living
               </h2>
               <p className="font-body text-lg text-text-light mb-6">
-                Our Clock Lamp is more than just a lighting fixture. It&apos;s a piece of art that 
+                My Nalanda Radiance Clock Lamp is more than just a lighting fixture. It&apos;s a piece of art that 
                 tells the story of ancient Sri Lankan architecture, specifically inspired by the 
                 magnificent Nalanda Gedige temple.
               </p>
               <p className="font-body text-lg text-text-light mb-8">
-                Each lamp features intricate carvings and textures that echo the stone architecture 
+                This lamp features intricate carvings and textures that echo the stone architecture 
                 of this historic temple, bringing a touch of heritage elegance to your modern home.
               </p>
               <Button 
@@ -83,26 +97,64 @@ export default function Home() {
                 View Gallery
               </Button>
             </div>
-            <Card variant="accent" className="w-fit overflow-hidden">
+            {/* <Card variant="accent" className="w-fit overflow-hidden">
               <Image
                 src={productImage}
                 alt="Clock Lamp - product"
                 className="block"
                 priority
               />
+            </Card> */}
+            <Card variant="accent" className="h-96 flex items-center justify-center border-2 border-yellow-500/30 hover:border-yellow-500/50">
+              <div className="text-center">
+                <div className="w-32 h-32 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-4xl">🕰️</span>
+                </div>
+                <p className="font-body text-text-light">Product Image Placeholder</p>
+              </div>
             </Card>
           </div>
         </div>
       </section>
 
+      {/* Inspiration Section */}
+      <section id="inspiration" className="py-20 px-6 bg-background-light">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <Card variant="accent" className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
+              <img
+                src="/images/nalanda_gedige.jpeg"
+                alt="Nalanda Gedige Temple - Inspiration for Clock Lamp"
+                className="w-full"
+              />
+            </Card>
+            <div className="animate-slide-in">
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary mb-6">
+                My Inspiration
+              </h2>
+              <p className="font-body text-lg text-text-light mb-6">
+                The Nalanda Gedige temple, a magnificent architectural marvel from ancient Sri Lanka, 
+                serves as the primary inspiration for my Nalanda Radiance Clock Lamp design. This 12th-century temple 
+                showcases the perfect blend of Hindu and Buddhist architectural elements.
+              </p>
+              <p className="font-body text-lg text-text-light mb-8">
+                The intricate stone carvings, geometric patterns, and harmonious proportions of Nalanda 
+                Gedige have been carefully reinterpreted in our lamp design, creating a piece that 
+                honors this cultural heritage while fitting seamlessly into modern interiors.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
-      <section className="py-20 px-6 bg-background-light">
+      <section id="features" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-primary mb-16">
-            Why Choose Our Clock Lamp?
+            Why Choose My Nalanda Radiance Clock Lamp?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card animate className="text-center p-8">
+            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="w-16 h-16 bg-accent rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl">🏛️</span>
               </div>
@@ -114,7 +166,7 @@ export default function Home() {
                 cultural heritage and timeless beauty.
               </p>
             </Card>
-            <Card animate className="text-center p-8">
+            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="w-16 h-16 bg-secondary rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl">✨</span>
               </div>
@@ -126,7 +178,7 @@ export default function Home() {
                 beauty that lasts for generations.
               </p>
             </Card>
-            <Card animate className="text-center p-8">
+            <Card animate className="text-center p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="w-16 h-16 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-2xl">🏠</span>
               </div>
@@ -143,14 +195,14 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 px-6 bg-white">
+      <section id="gallery" className="py-20 px-6 bg-background-light">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-primary mb-16">
             Gallery
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Gallery Item 1 - Front View */}
-            <Card animate className="overflow-hidden">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="h-64 bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -159,13 +211,13 @@ export default function Home() {
                   Front View
                 </h3>
                 <p className="font-body text-text-light">
-                  Classic clock lamp in its full glory.
+                  Classic Nalanda Radiance clock lamp in its full glory.
                 </p>
               </div>
             </Card>
 
             {/* Gallery Item 2 - Side View */}
-            <Card animate className="overflow-hidden">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -180,7 +232,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 3 - Detail Close-up */}
-            <Card animate className="overflow-hidden">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="h-64 bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -195,7 +247,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 4 - Living Room Setting */}
-            <Card animate className="overflow-hidden">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="h-64 bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -210,7 +262,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 5 - Bedroom Setting */}
-            <Card animate className="overflow-hidden">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="h-64 bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -225,7 +277,7 @@ export default function Home() {
             </Card>
 
             {/* Gallery Item 6 - Study/Office Setting */}
-            <Card animate className="overflow-hidden">
+            <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50">
               <div className="h-64 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                 <span className="text-6xl">🕰️</span>
               </div>
@@ -243,7 +295,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-background-light">
+      <section id="contact" className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-center text-primary mb-16">
             Contact Me
@@ -295,9 +347,9 @@ export default function Home() {
             {/* Contact Form */}
             <div>
               <h3 className="font-heading text-2xl font-bold text-primary mb-6">
-                Send us a Message
+                Send Me a Message
               </h3>
-              <Card className="p-8">
+              <Card className="p-8 border-2 border-yellow-500/30 hover:border-yellow-500/50">
                 <form className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block font-body font-bold text-text-dark mb-2">
@@ -349,7 +401,7 @@ export default function Home() {
             Ready to Transform Your Space?
           </h2>
           <p className="font-body text-xl text-secondary mb-8">
-            Bring the elegance of Nalanda Gedige into your home with our exclusive Clock Lamp.
+            Bring the elegance of Nalanda Gedige into your home with my exclusive Nalanda Radiance Clock Lamp.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="accent" size="large">
@@ -371,7 +423,7 @@ export default function Home() {
                 }
               }}
             >
-              Contact Us
+              Contact Me
             </Button>
           </div>
         </div>

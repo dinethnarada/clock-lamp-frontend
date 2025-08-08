@@ -14,9 +14,9 @@ const lato = Lato({
 });
 
 export const metadata = {
-  title: "Clock Lamp - Inspired by Nalanda Gedige",
-  description: "Discover our exquisite clock lamp inspired by the ancient architecture of Nalanda Gedige. Heritage design meets modern living.",
-  keywords: "clock lamp, nalanda gedige, heritage design, home decor, lighting",
+  title: "Nalanda Radiance Clock Lamp - Inspired by Nalanda Gedige",
+  description: "Discover our exquisite Nalanda Radiance clock lamp inspired by the ancient architecture of Nalanda Gedige. Heritage design meets modern living.",
+  keywords: "nalanda radiance clock lamp, nalanda gedige, heritage design, home decor, lighting",
 };
 
 export default function RootLayout({ children }) {

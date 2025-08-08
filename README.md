@@ -1,6 +1,6 @@
-# Clock Lamp Website
+# Nalanda Radiance Clock Lamp Website
 
-A beautiful, heritage-inspired website for Clock Lamp products, drawing inspiration from the ancient architecture of Nalanda Gedige.
+A beautiful, heritage-inspired website for Nalanda Radiance Clock Lamp products, drawing inspiration from the ancient architecture of Nalanda Gedige.
 
 ## 🎨 Design System
 
