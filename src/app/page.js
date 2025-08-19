@@ -4,8 +4,14 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-// import Image from 'next/image';
-// import productImage from '../../public/images/product.jpeg';
+import Image from 'next/image';
+import productImage from '../../public/images/product.jpeg';
+import productNightFront from '../../public/images/product_night_front_view.jpeg';
+import productNightCorner from '../../public/images/product_night_corner_view.jpeg';
+import productNightClose from '../../public/images/product_night_close_view.jpeg';
+import productFrontDay from '../../public/images/product_front_view.jpeg';
+import productCornerDay from '../../public/images/product_corner_view.jpeg';
+import productTopDay from '../../public/images/product_up_view.jpeg';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -160,21 +166,13 @@ export default function Home() {
                 View Gallery
               </Button>
             </div>
-            {/* <Card variant="accent" className="w-fit overflow-hidden">
+            <Card variant="accent" className="order-2 md:order-1 overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 luxury-shadow">
               <Image
                 src={productImage}
                 alt="Clock Lamp - product"
                 className="block"
                 priority
               />
-            </Card> */}
-            <Card variant="accent" className="h-96 flex items-center justify-center border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
-              <div className="text-center">
-                <div className="w-32 h-32 bg-secondary rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-4xl">🕰️</span>
-                </div>
-                <p className="font-body text-text-light">Product Image Placeholder</p>
-              </div>
             </Card>
           </div>
         </div>
@@ -276,90 +274,103 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Gallery Item 1 - Front View */}
             <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
-              <div className="h-64 bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
-                <span className="text-6xl">🕰️</span>
-              </div>
+              <Image
+                src={productNightFront}
+                alt="Clock Lamp - Front view (night)"
+                className="w-full h-auto"
+                priority
+              />
               <div className="p-6">
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">
-                  Front View
+                  Front View (Night)
                 </h3>
                 <p className="font-body text-text-light">
-                  Classic Nalanda Radiance clock lamp in its full glory.
+                  Warm illumination highlighting the facade and contours.
                 </p>
               </div>
             </Card>
 
             {/* Gallery Item 2 - Side View */}
             <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
-              <div className="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <span className="text-6xl">🕰️</span>
-              </div>
+              <Image
+                src={productNightCorner}
+                alt="Clock Lamp - Corner view (night)"
+                className="w-full h-auto"
+              />
               <div className="p-6">
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">
-                  Side Profile
+                  Corner View (Night)
                 </h3>
                 <p className="font-body text-text-light">
-                  Elegant side view showing craftsmanship.
+                  Angled night view showcasing depth, texture, and glow.
                 </p>
               </div>
             </Card>
 
             {/* Gallery Item 3 - Detail Close-up */}
             <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
-              <div className="h-64 bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-                <span className="text-6xl">🕰️</span>
-              </div>
+              <Image
+                src={productNightClose}
+                alt="Clock Lamp - Close-up detail (night)"
+                className="w-full h-auto"
+              />
               <div className="p-6">
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">
-                  Detail Close-up
+                  Detail Close-up (Night)
                 </h3>
                 <p className="font-body text-text-light">
-                  Intricate carvings and textures.
+                  Intricate carvings and textures under warm lighting.
                 </p>
               </div>
             </Card>
 
             {/* Gallery Item 4 - Living Room Setting */}
             <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
-              <div className="h-64 bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center">
-                <span className="text-6xl">🕰️</span>
-              </div>
+              <Image
+                src={productFrontDay}
+                alt="Clock Lamp - Front view (day)"
+                className="w-full h-auto"
+              />
               <div className="p-6">
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">
-                  Living Room Setting
+                  Front View (Day)
                 </h3>
                 <p className="font-body text-text-light">
-                  Perfect for modern living spaces.
+                  Natural daylight view revealing true tones and finish.
                 </p>
               </div>
             </Card>
 
             {/* Gallery Item 5 - Bedroom Setting */}
             <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
-              <div className="h-64 bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center">
-                <span className="text-6xl">🕰️</span>
-              </div>
+              <Image
+                src={productCornerDay}
+                alt="Clock Lamp - Corner view (day)"
+                className="w-full h-auto"
+              />
               <div className="p-6">
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">
-                  Bedroom Ambiance
+                  Corner View (Day)
                 </h3>
                 <p className="font-body text-text-light">
-                  Creates warm, inviting atmosphere.
+                  Daytime angled view highlighting form and proportions.
                 </p>
               </div>
             </Card>
 
             {/* Gallery Item 6 - Study/Office Setting */}
             <Card animate className="overflow-hidden border-2 border-yellow-500/30 hover:border-yellow-500/50 shadow-modern">
-              <div className="h-64 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                <span className="text-6xl">🕰️</span>
-              </div>
+              <Image
+                src={productTopDay}
+                alt="Clock Lamp - Top view (day)"
+                className="w-full h-auto"
+              />
               <div className="p-6">
                 <h3 className="font-heading text-xl font-bold text-primary mb-2">
-                  Study/Office Setting
+                  Top View (Day)
                 </h3>
                 <p className="font-body text-text-light">
-                  Elegant lighting for work spaces.
+                  Overhead perspective showcasing the clock face and details.
                 </p>
               </div>
             </Card>
