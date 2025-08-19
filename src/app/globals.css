@@ -170,6 +170,19 @@ body {
   transform: translateY(0);
 }
 
+/* Ensure sections are visible by default on small screens to avoid never-triggered animations */
+@media (max-width: 640px) {
+  .scroll-fade-in,
+  .scroll-slide-up,
+  .scroll-slide-left,
+  .scroll-slide-right,
+  .scroll-scale-in,
+  .scroll-stagger {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .scroll-slide-left {
   opacity: 0;
   transform: translateX(-50px);
