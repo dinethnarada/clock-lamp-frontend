@@ -28,8 +28,8 @@ export default function Home() {
   const inspirationRef = useScrollAnimation(0.2);
   const featuresRef = useScrollAnimation(0.2);
   const galleryRef = useScrollAnimation(0.2);
-  const contactRef = useScrollAnimation(0.2);
-  const ctaRef = useScrollAnimation(0.2);
+  const contactRef = useScrollAnimation(0.05);
+  const ctaRef = useScrollAnimation(0.05);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
